@@ -8,11 +8,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # ──────────────── 한글 폰트 설정 시작 ────────────────
-import matplotlib.font_manager as fm
+# (1) 한글 폰트 이름 지정
+plt.rcParams['font.family'] = 'Malgun Gothic'      # Windows
 
-font_path = './fonts/NanumGothic.ttf'  # => fonts 폴더에 .ttf 파일 넣을 것!
-fontprop = fm.FontProperties(fname=font_path).get_name()
-plt.rcParams['font.family'] = fontprop
+
+# (2) 음수 기호가 깨지지 않도록
 plt.rcParams['axes.unicode_minus'] = False
 # ──────────────── 한글 폰트 설정 끝 ────────────────
 
