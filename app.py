@@ -6,14 +6,30 @@ from dateutil import parser
 from flask import Flask, request, render_template_string
 import pandas as pd
 import matplotlib.pyplot as plt
+
+# 👉 추가된 부분 (폰트 매니저랑 OS 사용)
 import matplotlib.font_manager as fm
+import os
 
+# ──────────────── 한글 폰트 설정 시작 ────────────────
 font_path = './fonts/NanumGothic.ttf'  # 경로 꼭 확인
-fontprop = fm.FontProperties(fname=font_path).get_name()
-plt.rcParams['font.family'] = fontprop
+
+if os.path.exists(font_path):
+    try:
+        font_prop = fm.FontProperties(fname=font_path)
+        font_name = font_prop.get_name()
+        plt.rcParams['font.family'] = font_name
+        print(f"✅ Loaded font: {font_name}")
+    except Exception as e:
+        print(f"⚠️ 폰트 로딩 오류: {e}")
+else:
+    print(f"❌ 폰트 파일 없음: {font_path}")
+
+# 음수 기호 깨짐 방지
 plt.rcParams['axes.unicode_minus'] = False
+# ──────────────── 한글 폰트 설정 끝 ────────────────
 
-
+# Flask 앱 시작
 app = Flask(__name__)
 
 
