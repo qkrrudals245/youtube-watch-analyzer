@@ -7,14 +7,12 @@ from flask import Flask, request, render_template_string
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ──────────────── 한글 폰트 설정 시작 ────────────────
-# (1) 한글 폰트 이름 지정
-plt.rcParams['font.family'] = 'Malgun Gothic'      # Windows
+import matplotlib.font_manager as fm
 
-
-# (2) 음수 기호가 깨지지 않도록
+font_path = './fonts/NanumGothic.ttf'  # 경로 꼭 확인
+fontprop = fm.FontProperties(fname=font_path).get_name()
+plt.rcParams['font.family'] = fontprop
 plt.rcParams['axes.unicode_minus'] = False
-# ──────────────── 한글 폰트 설정 끝 ────────────────
 
 
 app = Flask(__name__)
