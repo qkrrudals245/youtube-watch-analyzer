@@ -6,7 +6,6 @@ from dateutil import parser
 from flask import Flask, request, render_template_string
 import pandas as pd
 import matplotlib.pyplot as plt
-
 import matplotlib.font_manager as fm
 
 font_path = './fonts/NanumGothic.ttf'  # 경로 꼭 확인
